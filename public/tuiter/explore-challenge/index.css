@@ -1,0 +1,103 @@
+.custom-width {
+    width: 80%;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.img-custom {
+    max-width: 100px;
+    width:100%;
+}
+
+.img-custom-sm {
+    max-width: 50px;
+    width:100%;
+}
+
+.sm-div {
+    width: 60%;
+    float: left;
+}
+
+.lg-div {
+    width: 95%;
+    float: left;
+}
+
+.cog-div {
+    width: 5%;
+    float: left;
+}
+
+.form-rounded {
+    border-radius: 1rem;
+}
+
+.grey-bg {
+    background-color: lightgray;
+    border: 1px solid lightgray;
+    border-radius: 0;
+}
+
+.black-bg {
+    background-color: black;
+    border: 1px solid black;
+    border-radius: 100px;
+
+}
+
+.icon-gold {
+    background-color: gold;
+
+}
+
+.icon-blue{
+    background-color: #0051ff;
+}
+
+.round-img {
+    border-radius: 100px;
+    object-fit: cover;
+}
+
+.text-blue{
+    color:#0051ff;
+}
+
+.list-group-item {
+    border: 0;
+}
+
+.very-round-button{
+    color:white;
+    background-color: #0051ff;
+    border: 1px solid #0051ff;
+    border-radius: 100px;
+}
+
+.my-active {
+    font-weight: bold;
+    position: relative;
+
+
+
+}
+
+.my-active::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-bottom: 2px solid #0051ff;
+}
+
+.nav-link {
+    color: #808080;
+}
+
+a {
+    text-decoration: none;
+}

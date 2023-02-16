@@ -1,0 +1,36 @@
+.custom-width {
+    width: 80%;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.img-custom {
+    max-width: 100px;
+    width:100%;
+}
+
+.img-custom-sm {
+    max-width: 50px;
+    width:100%;
+}
+
+.sm-div {
+    width: 60%;
+    float: left;
+}
+
+.lg-div {
+    width: 95%;
+    float: left;
+}
+
+.cog-div {
+    width: 5%;
+    float: left;
+}
+
+.form-rounded {
+    border-radius: 1rem;
+}
