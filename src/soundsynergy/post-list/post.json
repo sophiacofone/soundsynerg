@@ -1,0 +1,30 @@
+[
+  {
+    "_id": 1,
+    "name": "Elon Musk",
+    "avatarIcon": "ice.jpeg",
+    "userName": "elonmusk",
+    "time": "2h",
+    "image": "Killer-whale.jpeg",
+    "title": "Amazing show about xyz mission",
+    "contenta": "que sunt in culpa qui officia deserunt molli",
+    "contentb": "sto odio dignissimos duc",
+    "comments": "2.2K",
+    "retuit": "4.2K",
+    "likes": "5.2K"
+  },
+  {
+    "_id": 2,
+    "name": "New York Post",
+    "avatarIcon": "bobi.jpeg",
+    "userName": "nypost",
+    "time": "23h",
+    "image": "banner.jpeg",
+    "title": "We like the forrest",
+    "contenta": "similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
+    "contentb": "vero eos et accusamus et iusto odio dignissimos ducimus qui blandit.",
+    "comments": "1.2K",
+    "retuit": "2.2K",
+    "likes": "3.2K"
+  }
+]

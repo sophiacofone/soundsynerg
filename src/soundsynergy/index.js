@@ -1,38 +1,34 @@
 import React from "react";
+import NavigationSidebar from "./navigation-sidebar";
+import {Routes, Route} from "react-router";
+import whoReducer from "./reducers/who-reducer";
 import { configureStore } from '@reduxjs/toolkit';
 import {Provider} from "react-redux";
-import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
-import HomeScreen from "./screens/home/home-screen";
-import LoginScreen from "./screens/login/login-screen";
-import ProfileScreen from "./screens/profile/profile-screen";
-import SearchScreen from "./screens/search/search-screen";
-import DetailsScreen from "./screens/details/details-screen";
-import AnalysisScreen from "./screens/analysis/analysis-screen";
-import userReducer from "./redux/user-reducer";
 
-const store = configureStore({reducer: {user: userReducer}});
+const store = configureStore({reducer: {who: whoReducer}});
 
 function SoundSynergy() {
     return (
         <Provider store={store}>
-            <div className="container">
-                <h1>hi</h1>
-                <BrowserRouter>
-                    <Link to="/">Home</Link> |
-                    <Link to="/login">Login</Link> |
-                    <Link to="/profile">Profile</Link> |
-                    <Link to="/search">Search</Link> |
-                    <Link to="/details">Details</Link> |
-                    <Link to="/analysis">Analysis</Link>
+            <div className="row mt-2">
+                <div className="col-2 col-md-2 col-lg-1 col-xl-2">
+                    <NavigationSidebar active="explore"/>
+                </div>
+                <div className="col-10 col-md-10 col-lg-7 col-xl-6"
+                     style={{"position": "relative"}}>
                     <Routes>
-                        <Route path="/" element={<HomeScreen/>} />
-                        <Route path="/login" element={<LoginScreen/>} />
-                        <Route path="/profile" element={<ProfileScreen/>} />
-                        <Route path="/search" element={<SearchScreen/>} />
-                        <Route path="/details" element={<DetailsScreen/>} />
-                        <Route path="/analysis" element={<AnalysisScreen/>} />
+                        <Route path="/" element={<HomeScreen />}/>
+                        <Route path="home"    element={<HomeScreen/>}/>
+                        <Route path="login" element={<LoginScreen/>}/>
+                        <Route path="explore" element={<ExploreComponent/>}/>
+                        <Route path="explore" element={<ExploreComponent/>}/>
+                        <Route path="explore" element={<ExploreComponent/>}/>
+                        <Route path="explore" element={<ExploreComponent/>}/>
                     </Routes>
-                </BrowserRouter>
+                </div>
+                <div className="d-sm-none d-md-none d-lg-block col-lg-4 col-xl-4">
+                    <WhoToFollowList/>
+                </div>
             </div>
         </Provider>
     );

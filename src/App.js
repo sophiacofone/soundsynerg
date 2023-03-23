@@ -1,3 +1,4 @@
+import HelloWorld from "./labs/a6/hello-world";
 import SoundSynergy from "./soundsynergy";
 import {BrowserRouter} from "react-router-dom";
 import {Routes, Route} from "react-router";
@@ -8,7 +9,9 @@ function App() {
         <BrowserRouter>
             <div className="container">
                 <Routes>
-                    <Route path="/"
+                    <Route path="/*"
+                           element={<HelloWorld/>}/>
+                    <Route path="/soundsynergy/*"
                            element={<SoundSynergy/>}/>
                 </Routes>
             </div>
