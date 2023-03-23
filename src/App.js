@@ -1,24 +1,19 @@
-import { Provider } from "react-redux";
-import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
-import ProfileScreen from "./screens/profile/profile-screen";
-import store from "./redux/store";
-import HomeScreen from "./screens/home/home-screen";
+import SoundSynergy from "./soundsynergy";
+import {BrowserRouter} from "react-router-dom";
+import {Routes, Route} from "react-router";
+
 
 function App() {
-  return (
-      <Provider store={store}>
-        <div className="container">
-            <BrowserRouter>
-                <Link to="/">Home</Link> |
-                <Link to="/profile">Profile</Link>
+    return (
+        <BrowserRouter>
+            <div className="container">
                 <Routes>
-                    <Route path="/" element={<HomeScreen/>} />
-                    <Route path="/profile" element={<ProfileScreen/>} />
+                    <Route path="/"
+                           element={<SoundSynergy/>}/>
                 </Routes>
-              </BrowserRouter>
-        </div>
-      </Provider>
-  );
+            </div>
+        </BrowserRouter>
+    );
 }
 
 export default App;
