@@ -9,6 +9,7 @@ import SearchScreen from "./screens/search/search-screen";
 import DetailsScreen from "./screens/details/details-screen";
 import AnalysisScreen from "./screens/analysis/analysis-screen";
 import userReducer from "./redux/user-reducer";
+import RegisterScreen from "./screens/login/register-screen";
 
 const store = configureStore({reducer: {user: userReducer}});
 
@@ -21,7 +22,8 @@ function SoundSynergy() {
                     <Link to="/profile">Profile</Link> |
                     <Link to="/search">Search</Link> |
                     <Link to="/details">Details</Link> |
-                    <Link to="/analysis">Analysis</Link>
+                    <Link to="/analysis">Analysis</Link> |
+                    <Link to="/register">Register</Link>
                     <Routes>
                         <Route path="/" element={<HomeScreen/>} />
                         <Route path="/login" element={<LoginScreen/>} />
@@ -29,6 +31,7 @@ function SoundSynergy() {
                         <Route path="/search" element={<SearchScreen/>} />
                         <Route path="/details" element={<DetailsScreen/>} />
                         <Route path="/analysis" element={<AnalysisScreen/>} />
+                        <Route path="/register" element={<RegisterScreen/>} />
                     </Routes>
             </div>
         </Provider>

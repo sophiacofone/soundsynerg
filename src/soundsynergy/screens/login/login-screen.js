@@ -17,6 +17,9 @@ function LoginScreen() {
                     </div>
                     <button className="btn btn-lg btn-primary w-100 mt-3" type="submit">Sign in</button>
                 </form>
+                <div>
+                    <a href="/register" className="btn btn-link">Need to register?</a>
+                </div>
             </div>
         </div>
     );
