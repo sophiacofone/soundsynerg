@@ -19,6 +19,7 @@ function ProfileScreen() {
                 </div>
                 <div className="col-8">
                    <h2 className="mb-0">{profile.firstName} {profile.lastName}</h2>
+                    <div className="mb-0">{profile.userName}</div>
                     <div className="mt-2">{profile.bio}</div>
                     <div className="row">
                         <div className="col-4 mt-2 text-muted"><i className="bi bi-geo-alt-fill"></i> {profile.city}, {profile.state}</div>

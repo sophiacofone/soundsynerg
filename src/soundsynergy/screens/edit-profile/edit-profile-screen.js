@@ -54,6 +54,17 @@ function EditProfileScreen() {
                                 value={profile.lastName}
                                 onChange={(event) => setProfile({...profile, lastName: event.target.value})}
                             />
+                            <div className="form-group">
+                                <label htmlFor="inputUserName" className="text-muted custom-text-size-loc">User Name</label>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    id="inputUserName"
+                                    placeholder="User Name"
+                                    value={profile.userName}
+                                    onChange={(event) => setProfile({...profile, userName: event.target.value})}
+                                />
+                            </div>
                         </div>
                         <div className="form-group">
                             <label htmlFor="inputBio" className="text-muted custom-text-size-loc">Bio</label>

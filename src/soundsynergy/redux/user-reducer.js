@@ -4,6 +4,7 @@ const initialState = {
     user: {
         firstName: "Soph",
         lastName: "Wonderland",
+        userName: "sophwonderland",
         email: "swonder@gmail.com",
         phone: "123-456-7890",
         address: "123 Main St",
