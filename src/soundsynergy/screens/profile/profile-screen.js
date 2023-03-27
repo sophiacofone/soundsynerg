@@ -1,45 +1,48 @@
 import React, {useState} from "react";
-import {useSelector, useDispatch} from "react-redux";
-import {updateUser} from "../../redux/user-reducer";
+import { Link } from 'react-router-dom';
+import {useSelector} from "react-redux";
 
 function ProfileScreen() {
     const {user} = useSelector((state) => state.user);
     const [profile, setProfile] = useState(user);
-    const dispatch = useDispatch();
-    const handleSaveButton = () => {
-        dispatch(updateUser(profile));
-    };
-    return(
+
+    return (
         <div>
-            <h1>
-                <button onClick={handleSaveButton}>Save</button>
-                Profile
-            </h1>
-            <label>First name</label>
-            <input
-                value={profile.firstName}
-                onChange={(e) => setProfile({...profile, firstName: e.target.value})}
-            />
-            <label>Last name</label>
-            <input
-                value={profile.lastName}
-                onChange={(e) => setProfile({...profile, lastName: e.target.value})}
-            />
-            <label>Email</label>
-            <input
-                value={profile.email}
-                onChange={(e) => setProfile({...profile, email: e.target.value})}
-            />
-            <label>Phone</label>
-            <input
-                value={profile.phone}
-                onChange={(e) => setProfile({...profile, phone: e.target.value})}
-            />
-            <label>Address</label>
-            <input
-                value={profile.address}
-                onChange={(e) => setProfile({...profile, address: e.target.value})}
-            />
+            <div className="row">
+                <div>
+                    <h2>Profile</h2>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col-2">
+                    <img src={profile.profilePicture} alt="profile" className="position-relative rounded-circle img-thumbnail"/>
+                </div>
+                <div className="col-8">
+                   <h2 className="mb-0">{profile.firstName} {profile.lastName}</h2>
+                    <div className="mt-2">{profile.bio}</div>
+                    <div className="row">
+                        <div className="col-4 mt-2 text-muted"><i className="bi bi-geo-alt-fill"></i> {profile.city}, {profile.state}</div>
+                        <div className="col-4 mt-2 text-muted"><i className="bi bi-balloon"></i> Born {profile.dateOfBirth}</div>
+                        <div className="col-4 mt-2 text-muted"><i className="bi bi-calendar3"></i> Joined {profile.dateJoined}</div>
+                    </div>
+                    <div className="row">
+                        <div className="col-4 mt-2"><i className="bi bi-people-fill"></i> {profile.followingCount}
+                            <span className="text-muted"> Following</span>
+                        </div>
+                        <div className="col-4 mt-2"><i className="bi bi-people-fill"></i> {profile.followersCount}
+                            <span className="text-muted"> Followers</span>
+                        </div>
+                        <div className="col-4 mt-2"><i className="bi bi-cassette"></i> {profile.sharedCount}
+                            <span className="text-muted"> Songs Shared</span>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-2">
+                    <Link to="/tuiter/edit-profile">
+                        <button className="btn btn-primary rounded-pill float-end mt-2">Edit Profile</button>
+                    </Link>
+                </div>
+            </div>
         </div>
     );
 }
