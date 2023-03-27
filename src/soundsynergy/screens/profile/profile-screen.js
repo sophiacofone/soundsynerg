@@ -38,7 +38,7 @@ function ProfileScreen() {
                     </div>
                 </div>
                 <div className="col-2">
-                    <Link to="/tuiter/edit-profile">
+                    <Link to="/edit-profile">
                         <button className="btn btn-primary rounded-pill float-end mt-2">Edit Profile</button>
                     </Link>
                 </div>
