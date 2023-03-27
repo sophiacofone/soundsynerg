@@ -11,6 +11,7 @@ import AnalysisScreen from "./screens/analysis/analysis-screen";
 import userReducer from "./redux/user-reducer";
 import RegisterScreen from "./screens/login/register-screen";
 import EditProfileScreen from "./screens/edit-profile/edit-profile-screen";
+import NavigationSidebar from "./components/nav-bar";
 
 const store = configureStore({reducer: {user: userReducer}});
 
@@ -18,24 +19,27 @@ function SoundSynergy() {
     return (
         <Provider store={store}>
             <div className="container">
-                    <Link to="/">Home</Link> |
-                    <Link to="/login">Login</Link> |
-                    <Link to="/profile">Profile</Link> |
-                    <Link to="/edit-profile">Edit Profile</Link> |
-                    <Link to="/search">Search</Link> |
-                    <Link to="/details">Details</Link> |
-                    <Link to="/analysis">Analysis</Link> |
-                    <Link to="/register">Register</Link>
-                    <Routes>
-                        <Route path="/" element={<HomeScreen/>} />
-                        <Route path="/login" element={<LoginScreen/>} />
-                        <Route path="/profile" element={<ProfileScreen/>} />
-                        <Route path="/edit-profile" element={<EditProfileScreen/>} />
-                        <Route path="/search" element={<SearchScreen/>} />
-                        <Route path="/details" element={<DetailsScreen/>} />
-                        <Route path="/analysis" element={<AnalysisScreen/>} />
-                        <Route path="/register" element={<RegisterScreen/>} />
-                    </Routes>
+                <Link to="/">Home</Link> |
+                <Link to="/login">Login</Link> |
+                <Link to="/register">Register</Link> |
+                <Link to="/profile">Profile</Link> |
+                <Link to="/edit-profile">Edit Profile</Link> |
+                <Link to="/search">Search</Link> |
+                <Link to="/details">Details</Link> |
+                <Link to="/analysis">Analysis</Link> |
+                <div>
+                    <NavigationSidebar/>
+                </div>
+                <Routes>
+                    <Route path="/" element={<HomeScreen/>} />
+                    <Route path="/login" element={<LoginScreen/>} />
+                    <Route path="/profile" element={<ProfileScreen/>} />
+                    <Route path="/edit-profile" element={<EditProfileScreen/>} />
+                    <Route path="/search" element={<SearchScreen/>} />
+                    <Route path="/details" element={<DetailsScreen/>} />
+                    <Route path="/analysis" element={<AnalysisScreen/>} />
+                    <Route path="/register" element={<RegisterScreen/>} />
+                </Routes>
             </div>
         </Provider>
     );

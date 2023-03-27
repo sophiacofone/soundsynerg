@@ -5,8 +5,10 @@ function HomeScreen() {
     const {user} = useSelector((state) => state.user);
     return (
         <div>
-            <h1>Home</h1>
-            <h2> Welcome {user.firstName} {user.lastName}</h2>
+            <div>
+                <h1>Home</h1>
+                <h2> Welcome {user.firstName} {user.lastName}</h2>
+            </div>
         </div>
     );
 }
