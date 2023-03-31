@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { Link } from 'react-router-dom';
 import {useSelector} from "react-redux";
+import FriendsList from "../../components/friends";
 
 function ProfileScreen() {
     const {user} = useSelector((state) => state.user);
@@ -42,6 +43,11 @@ function ProfileScreen() {
                     <Link to="/edit-profile">
                         <button className="btn btn-primary rounded-pill float-end mt-2">Edit Profile</button>
                     </Link>
+                </div>
+            </div>
+            <div className="row">
+                <div>
+                    {/*<FriendsList/>*/}
                 </div>
             </div>
         </div>

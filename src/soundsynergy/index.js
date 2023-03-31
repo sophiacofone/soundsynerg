@@ -2,7 +2,7 @@ import React from "react";
 import { configureStore } from '@reduxjs/toolkit';
 import {Provider} from "react-redux";
 import { Route, Routes, Link } from 'react-router-dom';
-import HomeScreen from "./screens/home/home-screen";
+import HomeScreenLoggedIn from "./screens/home/home-screen-logged-in";
 import LoginScreen from "./screens/login/login-screen";
 import ProfileScreen from "./screens/profile/profile-screen";
 import SearchScreen from "./screens/search/search-screen";
@@ -18,7 +18,6 @@ const store = configureStore({reducer: {user: userReducer}});
 function SoundSynergy() {
     return (
         <Provider store={store}>
-            <div className="container">
                 <Link to="/">Home</Link> |
                 <Link to="/login">Login</Link> |
                 <Link to="/register">Register</Link> |
@@ -31,7 +30,7 @@ function SoundSynergy() {
                     <NavigationSidebar/>
                 </div>
                 <Routes>
-                    <Route path="/" element={<HomeScreen/>} />
+                    <Route path="/" element={<HomeScreenLoggedIn/>} />
                     <Route path="/login" element={<LoginScreen/>} />
                     <Route path="/profile" element={<ProfileScreen/>} />
                     <Route path="/edit-profile" element={<EditProfileScreen/>} />
@@ -40,7 +39,6 @@ function SoundSynergy() {
                     <Route path="/analysis" element={<AnalysisScreen/>} />
                     <Route path="/register" element={<RegisterScreen/>} />
                 </Routes>
-            </div>
         </Provider>
     );
 }

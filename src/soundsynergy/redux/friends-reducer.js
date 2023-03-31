@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    friend: {
-        id_: "1",
+    friends: {
+        _id: 123,
         firstName: "Soph",
         lastName: "Wonderland",
         userName: "sophwonderland",
@@ -10,10 +10,10 @@ const initialState = {
     }
 };
 
-const friendSlice = createSlice({
-    name: "friend",
+const friendsSlice = createSlice({
+    name: "friends",
     initialState,
     reducers: {},
 });
 
-export default friendSlice.reducer;
+export default friendsSlice.reducer;
