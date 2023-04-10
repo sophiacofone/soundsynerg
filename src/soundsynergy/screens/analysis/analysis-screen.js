@@ -5,6 +5,7 @@ import AnalysisModuleTop from "../../components/analysis-modules/analysis-module
 
 function AnalysisScreen() {
     const {user} = useSelector((state) => state.user);
+
     return (
         <div>
             <h1>Analysis page</h1>

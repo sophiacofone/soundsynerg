@@ -1,35 +1,69 @@
-import React from "react";
-import { useState } from 'react';
+import React, {useState} from "react";
+import {useSelector} from "react-redux";
 
+function AnalysisModuleTime() {
+    const {timeStats} = useSelector((state) => state.timeStats);
+    const [selectedTimeFrame, setSelectedTimeFrame] = useState("day");
 
-const AnalysisModuleTime = (
-    { timeStats = {
-        dailyHrs: 2,
-        weeklyHrs: 21,
-        monthlyHrs: 70,
-        yearlyHrs: 252,
-        dailyFriendAvgHrs: 1,
-        weeklyFriendAvgHrs: 12,
-        monthlyFriendAvgHrs: 30,
-        yearlyFriendAvgHrs: 332,
-        dailyAllAvgHrs: 6,
-        weeklyAllAvgHrs: 50,
-        monthlyAllAvgHrs: 100,
-        yearlyAllAvgHrs: 222,
-    }
-    }) => {
-    const [selectedOption, setSelectedOption] = useState('this week');
+    const userHours = {
+        day: timeStats.dailyHrs,
+        week: timeStats.weeklyHrs,
+        month: timeStats.monthlyHrs,
+        year: timeStats.yearlyHrs,
+    }[selectedTimeFrame];
 
-    const handleOptionChange = (e) => {
-        setSelectedOption(e.target.value);
+    const friendHours = {
+        day: timeStats.dailyFriendAvgHrs,
+        week: timeStats.weeklyFriendAvgHrs,
+        month: timeStats.monthlyFriendAvgHrs,
+        year: timeStats.yearlyFriendAvgHrs,
+    }[selectedTimeFrame];
+
+    const allHours = {
+        day: timeStats.dailyAllAvgHrs,
+        week: timeStats.weeklyAllAvgHrs,
+        month: timeStats.monthlyAllAvgHrs,
+        year: timeStats.yearlyAllAvgHrs,
+    }[selectedTimeFrame];
+
+    const timeFrameText = {
+        day: "today",
+        week: "this week",
+        month: "this month",
+        year: "this year",
     };
 
-    const userHours = selectedOption === 'today' ? timeStats.dailyHrs : selectedOption === 'this week' ? timeStats.weeklyHrs : selectedOption === 'this month' ? timeStats.monthlyHrs : timeStats.yearlyHrs;
-    const friendHours = selectedOption === 'today' ? timeStats.dailyFriendAvgHrs : selectedOption === 'this week' ? timeStats.weeklyFriendAvgHrs : selectedOption === 'this month' ? timeStats.monthlyFriendAvgHrs : timeStats.yearlyFriendAvgHrs;
-    const allHours = selectedOption === 'today' ? timeStats.dailyAllAvgHrs : selectedOption === 'this week' ? timeStats.weeklyAllAvgHrs : selectedOption === 'this month' ? timeStats.monthlyAllAvgHrs : timeStats.yearlyAllAvgHrs;
+    const userText = `You listened to ${userHours} hours of music ${timeFrameText[selectedTimeFrame]}`;
 
-    const percentageDiffFriend = ((userHours - friendHours) / friendHours) * 100;
-    const percentageDiffAll = ((userHours - allHours) / allHours) * 100;
+    let friendComparisonText;
+    if (userHours > friendHours) {
+        const percentMore = ((userHours - friendHours) / friendHours) * 100;
+        friendComparisonText = `That's ${percentMore.toFixed(
+            0
+        )}% more than your friends,`;
+    } else if (userHours < friendHours) {
+        const percentLess = ((friendHours - userHours) / friendHours) * 100;
+        friendComparisonText = `That's ${percentLess.toFixed(
+            0
+        )}% less than your friends,`;
+    } else {
+        friendComparisonText = `That's the same as as your friends,`;
+    }
+
+    let allComparisonText;
+    if (userHours > allHours) {
+        const percentMore = ((userHours - allHours) / allHours) * 100;
+        allComparisonText = `and ${percentMore.toFixed(
+            0
+        )}% more than SoundSynergy users.`;
+    } else if (userHours < allHours) {
+        const percentLess = ((allHours - userHours) / allHours) * 100;
+        allComparisonText = `and ${percentLess.toFixed(
+            0
+        )}% less than SoundSynergy users.`;
+    } else {
+        allComparisonText = `and the same as SoundSynergy users.`;
+    }
 
     return (
         <div className="">
@@ -37,25 +71,24 @@ const AnalysisModuleTime = (
                 <div className="card-header">Listening Stats</div>
                 <div className="card-body">
                     <h4 className="card-title">
-                        You listened to {userHours} hours of music {selectedOption}
+                        {userText}
                     </h4>
-                    <p className="card-text">That is {Math.abs(percentageDiffFriend).toFixed(0)}% {userHours > friendHours ? 'more' : 'less'} than your friends</p>
-                    <p className="card-text">That is {Math.abs(percentageDiffAll).toFixed(0)}% {userHours > allHours ? 'more' : 'less'} than SoundSynergy users</p>
+                    <p className="card-text">{friendComparisonText} {allComparisonText}</p>
                 </div>
                 <div className="card-footer text-muted">
                     <h6 className="card-subtitle text-muted mb-1">Select timeframe</h6>
                     <div className="form-group">
-                        <select className="form-control" id="time-dropdown" value={selectedOption} onChange={handleOptionChange}>
-                            <option value="today">Today</option>
-                            <option value="this week">This Week</option>
-                            <option value="this month">This Month</option>
-                            <option value="this year">This Year</option>
+                        <select className="form-control" id="time-dropdown" value={selectedTimeFrame} onChange={(e) => setSelectedTimeFrame(e.target.value)}>
+                            <option value="day">Today</option>
+                            <option value="week">This Week</option>
+                            <option value="month">This Month</option>
+                            <option value="year">This Year</option>
                         </select>
                     </div>
                 </div>
             </div>
         </div>
     );
-};
+}
 
 export default AnalysisModuleTime;

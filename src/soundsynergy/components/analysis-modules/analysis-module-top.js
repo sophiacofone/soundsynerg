@@ -5,7 +5,7 @@ import { useState } from 'react';
 const AnalysisModuleTop = (
     { topStats = {
         dailyTopSong: 'Hotel California',
-        imgDailyTopSong: 'song_place.jpeg',
+        imgDailyTopSong: 'example-profile-pic.jpg',
         weeklyTopSong: 'Flowers',
         imgWeeklyTopSong: 'song_place.jpeg',
         monthlyTopSong: 'The Winds of Winter',

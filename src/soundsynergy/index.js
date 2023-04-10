@@ -12,8 +12,9 @@ import userReducer from "./redux/user-reducer";
 import RegisterScreen from "./screens/login/register-screen";
 import EditProfileScreen from "./screens/edit-profile/edit-profile-screen";
 import NavigationSidebar from "./components/nav-bar";
+import timeStatsReducer from "./redux/time-stats-reducer";
 
-const store = configureStore({reducer: {user: userReducer}});
+const store = configureStore({reducer: {user: userReducer, timeStats: timeStatsReducer}});
 
 function SoundSynergy() {
     return (
