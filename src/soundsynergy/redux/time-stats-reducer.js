@@ -23,5 +23,4 @@ const timeStatsSlice = createSlice({
 });
 
 export default timeStatsSlice.reducer;
-export const { setTimeStats } = timeStatsSlice.actions;
 
