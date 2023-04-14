@@ -1,5 +1,9 @@
 import React from "react";
 import {useSelector} from "react-redux";
+import {Link} from "react-router-dom";
+import AnalysisModuleTopSong from "../../components/analysis-modules/analysis-module-top-song";
+import DiscoverModule from "../../components/discover-modules/discover-module";
+import ConnectModule from "../../components/connect-modules/connect-module";
 
 function HomeScreenLoggedIn() {
     const {user} = useSelector((state) => state.user);
@@ -25,34 +29,28 @@ function HomeScreenLoggedIn() {
                     <div className="container marketing">
                         <div className="row">
                             <div className="col-lg-4 text-center">
-                                <svg className="bd-placeholder-img rounded-circle" width="140" height="140"
-                                     xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder"
-                                     preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
-                                    <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
-                                </svg>
                                 <h2 className="fw-normal">Explore</h2>
                                 <p>See stats on your listening history, most popular genres, and more.</p>
-                                <p><a className="btn btn-secondary" href="#">View details »</a></p>
+                                <AnalysisModuleTopSong/>
+                                <Link to="/analysis"  className='btn btn-secondary'>
+                                    <span className=""> Analysis page »</span>
+                                </Link>
                             </div>
                             <div className="col-lg-4 text-center">
-                                <svg className="bd-placeholder-img rounded-circle" width="140" height="140"
-                                     xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder"
-                                     preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
-                                    <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
-                                </svg>
                                 <h2 className="fw-normal">Connect</h2>
                                 <p>Search for any song, and see which of your friends are most likely to enjoy it.</p>
-                                <p><a className="btn btn-secondary" href="#">View details »</a></p>
+                                <ConnectModule/>
+                                <Link to="/search"  className='btn btn-secondary'>
+                                    <span className=""> Search page »</span>
+                                </Link>
                             </div>
                             <div className="col-lg-4 text-center">
-                                <svg className="bd-placeholder-img rounded-circle" width="140" height="140"
-                                     xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder"
-                                     preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
-                                    <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
-                                </svg>
                                 <h2 className="fw-normal">Discover</h2>
-                                <p>Learn about local resturants, cafes, and shops that play music you will love. </p>
-                                <p><a className="btn btn-secondary" href="#">View details »</a></p>
+                                <p>Learn about local restaurants, cafes, and shops that play music you will love. </p>
+                                <DiscoverModule/>
+                                <Link to="/home"  className='btn btn-secondary'>
+                                    <span className=""> Discover page »</span>
+                                </Link>
                             </div>
                         </div>
                     </div>

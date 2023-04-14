@@ -14,8 +14,10 @@ import EditProfileScreen from "./screens/edit-profile/edit-profile-screen";
 import NavigationSidebar from "./components/nav-bar";
 import timeStatsReducer from "./redux/time-stats-reducer";
 import topStatsReducer from "./redux/top-stats-reducer";
+import businessStatsReducer from "./redux/business-stats-reducer";
+import friendsReducer from "./redux/friends-reducer";
 
-const store = configureStore({reducer: {user: userReducer, timeStats: timeStatsReducer, topStats: topStatsReducer}});
+const store = configureStore({reducer: {user: userReducer, timeStats: timeStatsReducer, topStats: topStatsReducer, businessStats: businessStatsReducer, friends: friendsReducer}});
 
 function SoundSynergy() {
     return (
