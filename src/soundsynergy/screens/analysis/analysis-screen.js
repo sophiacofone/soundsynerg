@@ -1,7 +1,10 @@
 import {useSelector} from "react-redux";
 import React from "react";
 import AnalysisModuleTime from "../../components/analysis-modules/analysis-module-time";
-import AnalysisModuleTop from "../../components/analysis-modules/analysis-module-top";
+import AnalysisModuleTopSong from "../../components/analysis-modules/analysis-module-top-song";
+import AnalysisModuleTopArtist from "../../components/analysis-modules/analysis-module-top-artist";
+import AnalysisModuleTopGenre from "../../components/analysis-modules/analysis-module-top-genre";
+import AnalysisModuleTopMood from "../../components/analysis-modules/analysis-module-top-mood";
 
 function AnalysisScreen() {
     const {user} = useSelector((state) => state.user);
@@ -16,7 +19,10 @@ function AnalysisScreen() {
             </div>
             <h1>Top-modules</h1>
             <div>
-                <AnalysisModuleTop/>
+                <AnalysisModuleTopSong/>
+                <AnalysisModuleTopArtist/>
+                <AnalysisModuleTopGenre/>
+                <AnalysisModuleTopMood/>
             </div>
         </div>
     );
