@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {useSelector} from "react-redux";
+import FollowersList from "../followers";
 
 function FollowersProfileModule() {
 
@@ -9,7 +10,7 @@ function FollowersProfileModule() {
                 <div className="card-header">Followers List</div>
                 <div className="card-body">
                     <div className="row">
-                        placeholder
+                        <FollowersList/>
                     </div>
                 </div>
             </div>

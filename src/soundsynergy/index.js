@@ -16,8 +16,20 @@ import timeStatsReducer from "./redux/time-stats-reducer";
 import topStatsReducer from "./redux/top-stats-reducer";
 import businessStatsReducer from "./redux/business-stats-reducer";
 import friendsReducer from "./redux/friends-reducer";
+import followerReducer from "./redux/follower-reducer";
+import followingReducer from "./redux/following-reducer";
+import sharedReducer from "./redux/shared-summary-reducer";
 
-const store = configureStore({reducer: {user: userReducer, timeStats: timeStatsReducer, topStats: topStatsReducer, businessStats: businessStatsReducer, friends: friendsReducer}});
+const store = configureStore({reducer: {
+        user: userReducer,
+        timeStats: timeStatsReducer,
+        topStats: topStatsReducer,
+        businessStats: businessStatsReducer,
+        friends: friendsReducer,
+        followers: followerReducer,
+        following: followingReducer,
+        shared: sharedReducer,
+    }});
 
 function SoundSynergy() {
     return (

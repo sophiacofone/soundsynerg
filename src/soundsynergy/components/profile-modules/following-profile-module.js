@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {useSelector} from "react-redux";
-import FriendsList from "../friends";
+import FollowingList from "../following";
 
 function FollowingProfileModule() {
 
@@ -10,7 +10,7 @@ function FollowingProfileModule() {
                 <div className="card-header">Following List</div>
                 <div className="card-body">
                     <div className="row">
-                     
+                    <FollowingList/>
                     </div>
                 </div>
             </div>

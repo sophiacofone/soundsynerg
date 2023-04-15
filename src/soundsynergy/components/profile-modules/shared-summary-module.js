@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {useSelector} from "react-redux";
+import SharedSummaryList from "../shared-summary";
 
 function SharedSummaryModule() {
 
@@ -9,7 +10,7 @@ function SharedSummaryModule() {
                 <div className="card-header">Recently Shared Songs</div>
                 <div className="card-body">
                     <div className="row">
-                        placeholder
+                        <SharedSummaryList/>
                     </div>
                 </div>
             </div>

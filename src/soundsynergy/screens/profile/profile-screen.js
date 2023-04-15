@@ -3,6 +3,7 @@ import FavAnalysisModule from "../../components/profile-modules/favorite-analysi
 import FriendsProfileModule from "../../components/profile-modules/friends-profile-module";
 import FollowingProfileModule from "../../components/profile-modules/following-profile-module";
 import SharedSummaryModule from "../../components/profile-modules/shared-summary-module";
+import FollowersProfileModule from "../../components/profile-modules/followers-profile-module";
 
 function ProfileScreen() {
     return (
@@ -27,6 +28,7 @@ function ProfileScreen() {
                     </div>
                     <div className="col-3">
                         <FollowingProfileModule/>
+                        <FollowersProfileModule/>
                     </div>
                 </div>
             </div>
