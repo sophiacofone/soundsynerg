@@ -1,15 +1,33 @@
-import React, {useState} from "react";
-import {useSelector} from "react-redux";
+import React, {useState, useEffect} from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import {findTopStatsThunk} from "../../../services/top-stats-thunk";
 
 function AnalysisModuleTopArtist() {
-    const {topStats} = useSelector((state) => state.topStats);
+    const dispatch = useDispatch();
+    const {topStats, loading} = useSelector((state) => state.topStats);
     const [selectedTimeFrame, setSelectedTimeFrame] = useState("day");
+    console.log("Top Stats:", topStats);
+    console.log("Loading:", loading);
+
+
+    useEffect(() => {
+        dispatch(findTopStatsThunk());
+    }, [dispatch]);
+
+    useEffect(() => {
+        // Only dispatch the thunk when selectedTimeFrame changes
+        dispatch(findTopStatsThunk(selectedTimeFrame));
+    }, [selectedTimeFrame, dispatch]);
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
 
     const topArtist = {
-        day: topStats.dailyTopArtist,
-        week: topStats.weeklyTopArtist,
-        month: topStats.monthlyTopArtist,
-        year: topStats.yearlyTopArtist,
+        day: topStats[0]?.dailyTopArtist,
+        week: topStats[0]?.weeklyTopArtist,
+        month: topStats[0]?.monthlyTopArtist,
+        year: topStats[0]?.yearlyTopArtist,
     }[selectedTimeFrame];
 
     const timeFrameText = {
@@ -17,9 +35,9 @@ function AnalysisModuleTopArtist() {
         week: "this week",
         month: "this month",
         year: "this year",
-    };
+    }[selectedTimeFrame];
 
-    const topArtistText = `Your top artist ${timeFrameText[selectedTimeFrame]} is ${topArtist} `;
+    const topArtistText = `Your top artist ${timeFrameText} is ${topArtist}`;
 
     return (
         <div className="">

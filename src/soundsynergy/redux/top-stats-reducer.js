@@ -1,36 +1,31 @@
 import { createSlice } from "@reduxjs/toolkit";
+import {findTopStatsThunk} from "../../services/top-stats-thunk";
 
 const initialState = {
-    topStats: {
-        dailyTopSong: 'Hotel California',
-        imgDailyTopSong: 'example-profile-pic.jpg',
-        weeklyTopSong: 'Flowers',
-        imgWeeklyTopSong: 'song_place.jpeg',
-        monthlyTopSong: 'The Winds of Winter',
-        imgMonthlyTopSong: 'song_place.jpeg',
-        yearlyTopSong: 'Kill Bill',
-        imgYearlyTopSong: 'song_place.jpeg',
-        dailyTopArtist: 'Ramin Djawadi',
-        imgDailyTopArtist: 'song_place.jpeg',
-        weeklyTopArtist: 'Taylor Swift',
-        imgWeeklyTopArtist: 'song_place.jpeg',
-        monthlyTopArtist: 'Drake',
-        imgMonthlyTopArtist: 'song_place.jpeg',
-        yearlyTopArtist: 'SZA',
-        imgYearlyTopArtist: 'song_place.jpeg',
-        dailyTopGenre: 'Rap',
-        weeklyTopGenre: 'Pop',
-        monthlyTopGenre: 'Latin',
-        yearlyTopGenre: 'Pop',
-        dailyTopMood: 'Happy',
-        weeklyTopMood: 'Sad',
-        monthlyTopMood: 'Upbeat',
-        yearlyTopMood: 'Happy',
-    },
-};
+    topStats: [],
+    loading: false
+}
+
 const topStatsSlice = createSlice({
     name: "topStats",
     initialState,
+    extraReducers: {
+        [findTopStatsThunk.pending]:
+            (state) => {
+                state.loading = true
+                state.topStats = []
+            },
+        [findTopStatsThunk.fulfilled]:
+            (state, action) => {
+                state.loading = false
+                state.topStats = action.payload
+            },
+        [findTopStatsThunk.rejected]:
+            (state, action) => {
+                state.loading = false
+                state.error = action.error
+            }
+    },
     reducers: {},
 });
 
