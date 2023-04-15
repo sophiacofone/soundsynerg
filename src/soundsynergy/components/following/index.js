@@ -4,7 +4,6 @@ import FollowingListItem from "./following-list-item";
 
 const FollowingList = () => {
     const followingArray = useSelector(state => state.following);
-    console.log(followingArray);
     return (
         <ul className="list-group">
             {followingArray.map(following => (
