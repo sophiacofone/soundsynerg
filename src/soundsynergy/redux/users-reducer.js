@@ -25,14 +25,14 @@ const usersSlice = createSlice({
     extraReducers: {
         [updateUserThunk.fulfilled]: (state, action) => {
             state.users = state.users.map((user) =>
-                user.id === action.payload.id ? action.payload : user
+                user._id === action.payload._id ? action.payload : user
             );
         },
         [createUserThunk.fulfilled]: (state, action) => {
             state.users.push(action.payload);
         },
         [deleteUserThunk.fulfilled]: (state, action) => {
-            state.users = state.users.filter((user) => user.id !== action.payload);
+            state.users = state.users.filter((user) => user._id !== action.payload);
         },
         [findAllUsersThunk.pending]: (state, action) => {
             state.loading = true;
