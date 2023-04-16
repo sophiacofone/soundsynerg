@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {useDispatch} from "react-redux";
 import { useNavigate } from "react-router";
-import {loginThunk} from "../../../services/auth-thunk";
+import {loginThunk} from "../../../services/users-thunk";
 
 function LoginScreen() {
     const [username, setUsername] = useState("");

@@ -1,37 +1,58 @@
-import {createAsyncThunk} from "@reduxjs/toolkit"
-import * as service from "./users-service"
+import * as userService from "./users-service";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 
-export const findUsersThunk = createAsyncThunk(
-    'users/findUsers', async () =>
-        await service.findUsers()
-)
-export const findUsersByID = createAsyncThunk(
-    'users/findUsersByID', async (id) =>
-        await service.findUserById(id)
-)
-export const findUsersByUsername = createAsyncThunk(
-    'users/findUsersByUsername', async (username) =>
-        await service.findUserByUsername(username)
-)
-export const findUsersByIDAndUpdate = createAsyncThunk(
-    'users/findUsersByIDAndUpdate', async (id) =>
-        await service.findUserByIDAndUpdate(id)
-)
-export const createUsers = createAsyncThunk(
-    'users/createUsers', async (user) => {
-        await service.createUser(user)
-        return user
+export const findAllUsersThunk = createAsyncThunk("users/findAll", async () => {
+    const users = await userService.findAllUsers();
+    return users;
+});
+
+export const findUserByIdThunk = createAsyncThunk(
+    "users/findById",
+    async (id) => {
+        const response = await userService.findUserById(id);
+        return response.data;
     }
-)
-export const deleteUsers = createAsyncThunk(
-    'users/deleteUsers', async (id) => {
-        await service.deleteUser(id)
-        return id
+);
+
+export const createUserThunk = createAsyncThunk(
+    "users/create",
+    async (user) => {
+        const response = await userService.createUser(user);
+        return response.data;
     }
-)
-export const updateUsers = createAsyncThunk(
-    'users/updateUsers', async (id, user) => {
-        await service.updateUser(id, user)
-        return user
+);
+
+export const updateUserThunk = createAsyncThunk(
+    "users/update",
+    async (user) => {
+        await userService.updateUser(user);
+        return user;
     }
-)
+);
+
+export const deleteUserThunk = createAsyncThunk("users/delete", async (id) => {
+    await userService.deleteUser(id);
+    return id;
+});
+
+export const loginThunk = createAsyncThunk("users/login", async (user) => {
+    const response = await userService.login(user);
+    return response.data;
+});
+
+export const logoutThunk = createAsyncThunk("users/logout", async () => {
+    await userService.logout();
+});
+
+export const registerThunk = createAsyncThunk(
+    "users/register",
+    async (user) => {
+        const response = await userService.register(user);
+        return response.data;
+    }
+);
+
+export const profileThunk = createAsyncThunk("users/profile", async () => {
+    const response = await userService.profile();
+    return response.data;
+});

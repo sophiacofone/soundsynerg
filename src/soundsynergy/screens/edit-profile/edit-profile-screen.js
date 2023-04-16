@@ -1,15 +1,15 @@
 import React, {useState} from "react";
 import {Link} from "react-router-dom";
 import {useSelector, useDispatch} from "react-redux";
-import {updateUser} from "../../redux/user-reducer";
+import {updateUserThunk} from "../../redux/user-reducer";
 
 function EditProfileScreen() {
     const {user} = useSelector((state) => state.user);
     const [profile, setProfile] = useState(user);
     const dispatch = useDispatch();
-    const handleSaveButton = () => {
-        dispatch(updateUser(profile));
-    };
+/*    const handleSaveButton = () => {
+        dispatch(updateUserThunk(profile));
+    };*/
     return (
         <div>
             <div className="card border-primary mb-3 mt-3">
@@ -18,10 +18,10 @@ function EditProfileScreen() {
                         <button className="btn btn-link"><i className="bi bi-x-lg"></i></button>
                     </Link>
                     Edit Profile
-                    <button
+    {/*                <button
                         className="btn btn-secondary rounded-pill float-end"
                         onClick={handleSaveButton}>Save
-                    </button>
+                    </button>*/}
                 </div>
                 <div className="card-body">
                     <h4 className="card-title">Public Information</h4>

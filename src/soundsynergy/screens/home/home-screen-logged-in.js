@@ -4,13 +4,13 @@ import {Link} from "react-router-dom";
 import AnalysisModuleTopSong from "../../components/analysis-modules/analysis-module-top-song";
 import DiscoverModule from "../../components/discover-modules/discover-module";
 import ConnectModule from "../../components/connect-modules/connect-module";
-import {findUsersThunk} from "../../../services/users-thunk";
+import {findAllUsersThunk} from "../../../services/users-thunk";
 
 function HomeScreenLoggedIn() {
     const dispatch = useDispatch();
     const {user, loading} = useSelector((state) => state.user);
     useEffect(() => {
-        dispatch(findUsersThunk());
+        dispatch(findAllUsersThunk());
     }, [dispatch]);
 
     if (loading) {

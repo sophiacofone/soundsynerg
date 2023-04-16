@@ -1,6 +1,15 @@
-import { createSlice } from "@reduxjs/toolkit";
-import {findUsersThunk} from "../../services/users-thunk";
-import {loginThunk, logoutThunk, registerThunk, profileThunk, updateUserThunk} from "../../services/auth-thunk";
+const { createSlice } = require("@reduxjs/toolkit");
+const {
+        findAllUsersThunk,
+        findUserByIdThunk,
+        createUserThunk,
+        deleteUserThunk,
+        updateUserThunk,
+        loginThunk,
+        logoutThunk,
+        profileThunk,
+        registerThunk,
+} = require("../../services/users-thunk");
 
 const initialState = {
     users: [],
@@ -8,42 +17,55 @@ const initialState = {
     error: null,
     currentUser: null,
 };
-const userSlice = createSlice({
-        name: "user",
-        initialState: initialState,
-        extraReducers: {
-        [findUsersThunk.pending]:
-            (state) => {
-                state.loading = true
-                state.user = []
-            },
-        [findUsersThunk.fulfilled]:
-            (state, action) => {
-                state.loading = false
-                state.user = action.payload
-            },
-        [findUsersThunk.rejected]:
-            (state, action) => {
-                state.loading = false
-                state.error = action.error
-            },
-            [loginThunk.fulfilled]: (state, { payload }) => {
-                state.currentUser = payload;
-            },
-            [logoutThunk.fulfilled]: (state) => {
-                state.currentUser = null;
-            },
-            [registerThunk.fulfilled]: (state, { payload }) => {
-                state.currentUser = payload;
-            },
-            [profileThunk.fulfilled]: (state, { payload }) => {
-                state.currentUser = payload;
-            },
-            [updateUserThunk.fulfilled]: (state, { payload }) => {
-                state.currentUser = payload;
-            }
-    },
+
+const usersSlice = createSlice({
+    name: "users",
+    initialState,
     reducers: {},
-    });
-export default userSlice.reducer;
-export const {updateUser} = userSlice.actions;
+    extraReducers: {
+        [updateUserThunk.fulfilled]: (state, action) => {
+            state.users = state.users.map((user) =>
+                user.id === action.payload.id ? action.payload : user
+            );
+        },
+        [createUserThunk.fulfilled]: (state, action) => {
+            state.users.push(action.payload);
+        },
+        [deleteUserThunk.fulfilled]: (state, action) => {
+            state.users = state.users.filter((user) => user.id !== action.payload);
+        },
+        [findAllUsersThunk.pending]: (state, action) => {
+            state.loading = true;
+            state.users = [];
+        },
+        [findAllUsersThunk.fulfilled]: (state, action) => {
+            state.loading = false;
+            state.users = action.payload;
+        },
+        [findAllUsersThunk.rejected]: (state, action) => {
+            state.loading = false;
+            state.error = action.error.message;
+        },
+        [findUserByIdThunk.pending]: (state, action) => {
+            state.loading = true;
+        },
+        [findUserByIdThunk.fulfilled]: (state, action) => {
+            state.loading = false;
+            state.currentUser = action.payload;
+        },
+        [loginThunk.fulfilled]: (state, action) => {
+            state.currentUser = action.payload;
+        },
+        [logoutThunk.fulfilled]: (state, action) => {
+            state.currentUser = null;
+        },
+        [profileThunk.fulfilled]: (state, action) => {
+            state.currentUser = action.payload;
+        },
+        [registerThunk.fulfilled]: (state, action) => {
+            state.currentUser = action.payload;
+        },
+    },
+});
+
+export default usersSlice.reducer;

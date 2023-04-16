@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {useDispatch} from "react-redux";
 import { useNavigate } from "react-router";
-import {registerThunk} from "../../../services/auth-thunk";
+import {registerThunk} from "../../../services/users-thunk";
 
 
 function RegisterScreen() {
