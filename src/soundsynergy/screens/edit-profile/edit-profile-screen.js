@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Link} from "react-router-dom";
 import {useSelector, useDispatch} from "react-redux";
-import {updateUserThunk} from "../../redux/user-reducer";
+import {updateUserThunk} from "../../../services/users-thunk";
 
 function EditProfileScreen() {
     const {user} = useSelector((state) => state.user);

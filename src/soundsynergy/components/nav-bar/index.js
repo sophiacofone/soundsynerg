@@ -5,7 +5,9 @@ import { useSelector } from "react-redux";
 
 const NavigationSidebar = (
 ) => {
+/*
     const { currentUser } = useSelector((state) => state.user);
+*/
     const {pathname} = useLocation();
     const paths = pathname.split('/')
     const active = paths[2];
@@ -39,34 +41,34 @@ const NavigationSidebar = (
                             </li>
                             <li className="nav-item">
                                 <div className="nav-link">
-                                    {!currentUser && <Link to="/login"  className={`nav-link ${active === 'login'?'active':''}`}>
+                                    <Link to="/login"  className={`nav-link ${active === 'login'?'active':''}`}>
                                         <i className="bi bi-person"></i>
                                         <span className=""> Login</span>
-                                    </Link>}
+                                    </Link>
                                 </div>
                             </li>
                             <li className="nav-item">
                                 <div className="nav-link">
-                                    {!currentUser && <Link to="/register"  className={`nav-link ${active === 'login'?'active':''}`}>
+                                    <Link to="/register"  className={`nav-link ${active === 'login'?'active':''}`}>
                                         <i className="bi bi-person"></i>
                                         <span className=""> Login</span>
-                                    </Link>}
+                                    </Link>
                                 </div>
                             </li>
                             <li className="nav-item">
                                 <div className="nav-link">
-                                    {currentUser && <Link to="/profile"  className={`nav-link ${active === 'profile'?'active':''}`}>
+                                    <Link to="/profile"  className={`nav-link ${active === 'profile'?'active':''}`}>
                                         <i className="bi bi-people-fill"></i>
                                         <span className=""> Profile</span>
-                                    </Link>}
+                                    </Link>
                                 </div>
                             </li>
                             <li className="nav-item">
                                 <div className="nav-link">
-                                    {currentUser && <Link to="/analysis"  className={`nav-link ${active === 'analysis'?'active':''}`}>
+                                     <Link to="/analysis"  className={`nav-link ${active === 'analysis'?'active':''}`}>
                                         <i className="bi bi-bar-chart"></i>
                                         <span className=""> Analysis</span>
-                                    </Link>}
+                                    </Link>
                                 </div>
                             </li>
                             {/*<li className="nav-item">

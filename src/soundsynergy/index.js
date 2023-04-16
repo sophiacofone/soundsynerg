@@ -1,5 +1,4 @@
 import React from "react";
-import { configureStore } from '@reduxjs/toolkit';
 import {Provider} from "react-redux";
 import { Route, Routes, Link } from 'react-router-dom';
 import HomeScreenLoggedIn from "./screens/home/home-screen-logged-in";
@@ -11,27 +10,8 @@ import AnalysisScreen from "./screens/analysis/analysis-screen";
 import RegisterScreen from "./screens/login/register-screen";
 import EditProfileScreen from "./screens/edit-profile/edit-profile-screen";
 import SpotifyScreen from "../spotify";
-
-import userReducer from "./redux/user-reducer";
 import NavigationSidebar from "./components/nav-bar";
-import timeStatsReducer from "./redux/time-stats-reducer";
-import topStatsReducer from "./redux/top-stats-reducer";
-import businessStatsReducer from "./redux/business-stats-reducer";
-import friendsReducer from "./redux/friends-reducer";
-import followerReducer from "./redux/follower-reducer";
-import followingReducer from "./redux/following-reducer";
-import sharedReducer from "./redux/shared-summary-reducer";
-
-const store = configureStore({reducer: {
-        user: userReducer,
-        timeStats: timeStatsReducer,
-        topStats: topStatsReducer,
-        businessStats: businessStatsReducer,
-        friends: friendsReducer,
-        followers: followerReducer,
-        following: followingReducer,
-        shared: sharedReducer,
-    }});
+import store from "./redux/store";
 
 function SoundSynergy() {
     return (

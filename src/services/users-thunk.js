@@ -53,6 +53,11 @@ export const registerThunk = createAsyncThunk(
 );
 
 export const profileThunk = createAsyncThunk("users/profile", async () => {
-    const response = await userService.profile();
-    return response.data;
+    try {
+        const response = await userService.profile();
+        return response.data;
+    } catch (error) {
+        console.error("Error fetching user profile:", error);
+        throw error;
+    }
 });

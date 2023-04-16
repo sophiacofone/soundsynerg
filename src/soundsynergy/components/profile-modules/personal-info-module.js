@@ -14,11 +14,11 @@ function PersonalInfoModule() {
         <div>
             <h1>Profile</h1>
             <div>
-                {currentUser && (
+{/*                {currentUser && (
                     <div>
                         <h2>Welcome {currentUser.username}</h2>
                     </div>
-                )}
+                )}*/}
             </div>
             <button
                 className="btn btn-danger"

@@ -1,5 +1,5 @@
 import {configureStore} from "@reduxjs/toolkit";
-import userReducer from "./user-reducer";
+import usersReducer from "./users-reducer";
 import timeStatsReducer from "./time-stats-reducer";
 import topStatsReducer from "./top-stats-reducer";
 import businessStatsReducer from "./business-stats-reducer";
@@ -11,7 +11,7 @@ import sharedReducer from "./shared-summary-reducer";
 
 const store = configureStore({
     reducer: {
-        user: userReducer,
+        users: usersReducer,
         timeStats: timeStatsReducer,
         topStats: topStatsReducer,
         businessStats: businessStatsReducer,
