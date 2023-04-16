@@ -7,6 +7,10 @@ import ConnectModule from "../../components/connect-modules/connect-module";
 
 function HomeScreenLoggedIn() {
     const {user} = useSelector((state) => state.user);
+    const handleSpotifyAuthClick = () => {
+        window.location.href = "http://localhost:4000/spotify/authorize";
+    };
+
     return (
         <div>
             <div className="card m-3">
@@ -18,7 +22,16 @@ function HomeScreenLoggedIn() {
                 </div>
                 <div className="card-body p-1">
                     <h1 className="card-title text-center">
-                        <i className="bi bi-music-note-beamed"></i>
+                        <span>
+                            <i className="bi bi-music-note-beamed"></i>
+                        </span>
+                        <span>
+                            <button
+                                className="btn btn-primary"
+                                onClick={handleSpotifyAuthClick}>
+                                Authorize with Spotify
+                            </button>
+                        </span>
                     </h1>
                     {/*<h6 className="card-subtitle text-muted text-center"><i className="bi bi-stars"></i>See what's*/}
                     {/*    possible with SoundSynergy, and log in!*/}

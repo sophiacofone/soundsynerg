@@ -8,9 +8,11 @@ import ProfileScreen from "./screens/profile/profile-screen";
 import SearchScreen from "./screens/search/search-screen";
 import DetailsScreen from "./screens/details/details-screen";
 import AnalysisScreen from "./screens/analysis/analysis-screen";
-import userReducer from "./redux/user-reducer";
 import RegisterScreen from "./screens/login/register-screen";
 import EditProfileScreen from "./screens/edit-profile/edit-profile-screen";
+import SpotifyScreen from "../spotify";
+
+import userReducer from "./redux/user-reducer";
 import NavigationSidebar from "./components/nav-bar";
 import timeStatsReducer from "./redux/time-stats-reducer";
 import topStatsReducer from "./redux/top-stats-reducer";
@@ -42,6 +44,7 @@ function SoundSynergy() {
                 <Link to="/search">Search</Link> |
                 <Link to="/details">Details</Link> |
                 <Link to="/analysis">Analysis</Link> |
+                <Link to="/spotify">Spotify</Link> |
                 <div>
                     <NavigationSidebar/>
                 </div>
@@ -54,6 +57,7 @@ function SoundSynergy() {
                     <Route path="/details" element={<DetailsScreen/>} />
                     <Route path="/analysis" element={<AnalysisScreen/>} />
                     <Route path="/register" element={<RegisterScreen/>} />
+                    <Route path="/spotify" element={<SpotifyScreen/>} />
                 </Routes>
         </Provider>
     );

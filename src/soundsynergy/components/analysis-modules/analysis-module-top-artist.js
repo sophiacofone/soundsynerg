@@ -6,9 +6,6 @@ function AnalysisModuleTopArtist() {
     const dispatch = useDispatch();
     const {topStats, loading} = useSelector((state) => state.topStats);
     const [selectedTimeFrame, setSelectedTimeFrame] = useState("day");
-    console.log("Top Stats:", topStats);
-    console.log("Loading:", loading);
-
 
     useEffect(() => {
         dispatch(findTopStatsThunk());

@@ -4699,7 +4699,7 @@ concierge-bell:
       - attention
       - hotel
       - receptionist
-      - service
+      - spotify-service.js
       - support
   styles:
     - solid
@@ -18601,7 +18601,7 @@ taxi:
       - cab
       - cabbie
       - car
-      - car service
+      - car spotify-service.js
       - lyft
       - machine
       - transportation
