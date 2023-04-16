@@ -1,12 +1,21 @@
-import React from "react";
-import {useSelector} from "react-redux";
+import React, {useState, useEffect} from "react";
+import { useDispatch, useSelector } from 'react-redux';
 import {Link} from "react-router-dom";
 import AnalysisModuleTopSong from "../../components/analysis-modules/analysis-module-top-song";
 import DiscoverModule from "../../components/discover-modules/discover-module";
 import ConnectModule from "../../components/connect-modules/connect-module";
+import {findUsersThunk} from "../../../services/users-thunk";
 
 function HomeScreenLoggedIn() {
-    const {user} = useSelector((state) => state.user);
+    const dispatch = useDispatch();
+    const {user, loading} = useSelector((state) => state.user);
+    useEffect(() => {
+        dispatch(findUsersThunk());
+    }, [dispatch]);
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
     const handleSpotifyAuthClick = () => {
         window.location.href = "http://localhost:4000/spotify/authorize";
     };

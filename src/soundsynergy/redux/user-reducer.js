@@ -1,34 +1,49 @@
 import { createSlice } from "@reduxjs/toolkit";
+import {findUsersThunk} from "../../services/users-thunk";
+import {loginThunk, logoutThunk, registerThunk, profileThunk, updateUserThunk} from "../../services/auth-thunk";
 
 const initialState = {
-    user: {
-        firstName: "Soph",
-        lastName: "Wonderland",
-        userName: "sophwonderland",
-        email: "swonder@gmail.com",
-        phone: "123-456-7890",
-        address: "123 Main St",
-        city: "Boston",
-        state: "MA",
-        zip: "02134",
-        country: "USA",
-        profilePicture: "./images/example-profile-pic.jpg",
-        bio: "I am a music lover and I love to share my music with others.",
-        dateOfBirth: "01/01/2000",
-        dateJoined: "01/01/2020",
-        followersCount: 100,
-        followingCount: 10,
-        sharedCount: 50,
-    }
+    users: [],
+    loading: false,
+    error: null,
+    currentUser: null,
 };
 const userSlice = createSlice({
         name: "user",
         initialState: initialState,
-        reducers: {
-            updateUser: (state, action) => {
-                state.user = action.payload;
+        extraReducers: {
+        [findUsersThunk.pending]:
+            (state) => {
+                state.loading = true
+                state.user = []
+            },
+        [findUsersThunk.fulfilled]:
+            (state, action) => {
+                state.loading = false
+                state.user = action.payload
+            },
+        [findUsersThunk.rejected]:
+            (state, action) => {
+                state.loading = false
+                state.error = action.error
+            },
+            [loginThunk.fulfilled]: (state, { payload }) => {
+                state.currentUser = payload;
+            },
+            [logoutThunk.fulfilled]: (state) => {
+                state.currentUser = null;
+            },
+            [registerThunk.fulfilled]: (state, { payload }) => {
+                state.currentUser = payload;
+            },
+            [profileThunk.fulfilled]: (state, { payload }) => {
+                state.currentUser = payload;
+            },
+            [updateUserThunk.fulfilled]: (state, { payload }) => {
+                state.currentUser = payload;
             }
-        },
+    },
+    reducers: {},
     });
 export default userSlice.reducer;
 export const {updateUser} = userSlice.actions;
