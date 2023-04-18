@@ -8,7 +8,6 @@ import SearchScreen from "./screens/search/search-screen";
 import DetailsScreen from "./screens/details/details-screen";
 import AnalysisScreen from "./screens/analysis/analysis-screen";
 import RegisterScreen from "./screens/login/register-screen";
-import EditProfileScreen from "./screens/edit-profile/edit-profile-screen";
 import SpotifyScreen from "../spotify";
 import NavigationSidebar from "./components/nav-bar";
 import store from "./redux/store";
@@ -20,7 +19,6 @@ function SoundSynergy() {
                 <Link to="/login">Login</Link> |
                 <Link to="/register">Register</Link> |
                 <Link to="/profile">Profile</Link> |
-                <Link to="/edit-profile">Edit Profile</Link> |
                 <Link to="/search">Search</Link> |
                 <Link to="/details">Details</Link> |
                 <Link to="/analysis">Analysis</Link> |
@@ -32,7 +30,6 @@ function SoundSynergy() {
                     <Route path="/" element={<HomeScreenLoggedIn/>} />
                     <Route path="/login" element={<LoginScreen/>} />
                     <Route path="/profile" element={<ProfileScreen/>} />
-                    <Route path="/edit-profile" element={<EditProfileScreen/>} />
                     <Route path="/search" element={<SearchScreen/>} />
                     <Route path="/details" element={<DetailsScreen/>} />
                     <Route path="/analysis" element={<AnalysisScreen/>} />

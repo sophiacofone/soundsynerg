@@ -4,10 +4,11 @@ const {
         findUserByIdThunk,
         createUserThunk,
         deleteUserThunk,
-        updateUserThunk,
+        /*updateUserThunk,*/
         loginThunk,
+        updateProfileThunk,
         logoutThunk,
-        profileThunk,
+        fetchProfile,
         registerThunk,
 } = require("../../services/users-thunk");
 
@@ -16,6 +17,7 @@ const initialState = {
     loading: false,
     error: null,
     currentUser: null,
+    profileFetched: false,
 };
 
 const usersSlice = createSlice({
@@ -23,11 +25,14 @@ const usersSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: {
-        [updateUserThunk.fulfilled]: (state, action) => {
-            state.users = state.users.map((user) =>
-                user._id === action.payload._id ? action.payload : user
-            );
+        [updateProfileThunk.fulfilled]: (state, action) => {
+            state.currentUser = action.payload;
         },
+/*        [updateUserThunk.fulfilled]: (state, action) => {
+            console.log("Updated profile data reducer:", action.payload);
+            state.currentUser = action.payload;
+            state.profileFetched = true; // Set profileFetched to true
+        },*/
         [createUserThunk.fulfilled]: (state, action) => {
             state.users.push(action.payload);
         },
@@ -58,9 +63,11 @@ const usersSlice = createSlice({
         },
         [logoutThunk.fulfilled]: (state, action) => {
             state.currentUser = null;
+            state.profileFetched = false; // Reset profileFetched to false
         },
-        [profileThunk.fulfilled]: (state, action) => {
+        [fetchProfile.fulfilled]: (state, action) => {
             state.currentUser = action.payload;
+            state.profileFetched = true;
         },
         [registerThunk.fulfilled]: (state, action) => {
             state.currentUser = action.payload;

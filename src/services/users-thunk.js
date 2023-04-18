@@ -22,13 +22,24 @@ export const createUserThunk = createAsyncThunk(
     }
 );
 
-export const updateUserThunk = createAsyncThunk(
+/*export const updateUserThunk = createAsyncThunk(
     "users/update",
-    async (user) => {
-        await userService.updateUser(user);
-        return user;
+    async ({userId, updatedProfile}) => {
+        await userService.updateUser(userId, updatedProfile);
+        const updatedProfileData = await userService.findUserById(userId);
+        console.log("Updated profile data thunk:", updatedProfileData.data);
+        return updatedProfileData.data;
     }
-);
+);*/
+
+export const updateProfileThunk = createAsyncThunk('profile/updateProfile', async (updatedProfile) => {
+    try {
+        const response = await userService.updateUser(updatedProfile);
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+});
 
 export const deleteUserThunk = createAsyncThunk("users/delete", async (id) => {
     await userService.deleteUser(id);
@@ -52,12 +63,11 @@ export const registerThunk = createAsyncThunk(
     }
 );
 
-export const profileThunk = createAsyncThunk("users/profile", async () => {
+export const fetchProfile = createAsyncThunk('profile/fetchProfile', async () => {
     try {
         const response = await userService.profile();
         return response.data;
     } catch (error) {
-        console.error("Error fetching user profile:", error);
         throw error;
     }
 });
